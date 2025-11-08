@@ -1,38 +1,4 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
-
-/**
- * @title TokenAuditTrail
- * @notice A blockchain-based system to track token transfers and create an immutable audit trail 
- *         for transparency and accountability.
- */
-contract Project {
-    address public admin;
-    uint256 public auditCount;
-
-    struct AuditEntry {
-        uint256 id;
-        address from;
-        address to;
-        uint256 amount;
-        uint256 timestamp;
-        string note;
-    }
-
-    mapping(uint256 => AuditEntry) public audits;
-    mapping(address => uint256) public balances;
-
-    event TokenTransferred(address indexed from, address indexed to, uint256 amount, string note);
-    event AuditRecorded(uint256 indexed id, address indexed from, address indexed to, uint256 amount, string note);
-
-    modifier onlyAdmin() {
-        require(msg.sender == admin, "Only admin can perform this action");
-        _;
-    }
-
-    constructor() {
-        admin = msg.sender;
-        balances[admin] = 1_000_000 * 10**18; // initial supply for simulation
+initial supply for simulation
     }
 
     /**
@@ -83,3 +49,6 @@ contract Project {
         return balances[_user];
     }
 }
+// 
+End
+// 
