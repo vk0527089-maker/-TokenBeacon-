@@ -1,27 +1,43 @@
-# TokenAuditTrail: Immutable Record of Token Transactions for Compliance
+TokenBeacon: Upgradeable Logic Beacon for Smart Contract Systems
+Project Description
 
-## Project Description
-TokenAuditTrail is a Solidity smart contract designed to provide a secure, immutable ledger of token transactions specifically tailored for compliance auditing purposes. The contract records every token transfer with detailed information including sender, receiver, amount, timestamp, and the originating transaction hash. This transparency and immutability help organizations comply with regulatory requirements by providing a verifiable transaction audit trail on-chain.
+TokenBeacon is a Solidity smart contract designed to act as an upgradeable beacon for proxy-based smart contract systems. It stores a single implementation address that can be updated securely by an admin, enabling all beacon-linked proxy contracts to automatically adopt new logic without redeployment. This pattern provides a modular, scalable, and manageable upgrade path for complex decentralized applications.
 
-## Project Vision
-Our vision is to empower blockchain projects, financial institutions, and regulatory bodies with an accessible and tamper-proof token transaction log that enhances trust, accountability, and compliance in decentralized ecosystems. TokenAuditTrail aims to be the go-to compliance layer that integrates seamlessly with any token system, making audits and reporting streamlined and reliable.
+By separating implementation logic from data storage and using a beacon as the source of truth for upgrades, TokenBeacon ensures consistent behavior across multiple proxy instances while maintaining strict control over upgrade permissions.
 
-## Key Features
-- **Immutable Transfer Logging:** Every token transfer is logged immutably on-chain, ensuring a permanent record.
-- **Detailed Records:** Logs include sender, recipient, amount, timestamp, and original transaction hash for robust auditing.
-- **Admin-Controlled Logging:** Only authorized admins can log transfers, ensuring data integrity.
-- **On-chain Access:** Transfer records can be accessed via public view functions for transparency.
-- **Event Emission:** Emits events for easy off-chain indexing and monitoring by compliance tools.
-- **Simple Integration:** Designed to work alongside existing token contracts by logging their transfers.
+Project Vision
 
-## Future Scope
-- Multi-admin role support with customizable permissions.
-- Integration with popular token standards (ERC20, ERC721) for automated transfer detection.
-- Advanced querying and filtering capabilities for audit reports.
-- Off-chain compliance dashboards and alerting systems powered by the contract events.
-- Support for cross-chain transfer logging.
-- Incorporation of cryptographic proofs for enhanced data verification.
+Our vision is to simplify and standardize the upgradeability process across the Ethereum ecosystem. TokenBeacon aims to become the fundamental upgrade module for developers building scalable DApps that require secure, controlled, and consistent contract upgrades. By offering an efficient and reliable upgrade architecture, TokenBeacon empowers projects to evolve rapidly while maintaining decentralization and user trust.
 
+Key Features
+
+Centralized Logic Source: Stores and exposes the current implementation address for all beacon-based proxies.
+
+Admin-Controlled Upgrades: Only the designated admin can upgrade the implementation or transfer admin rights.
+
+Global Proxy Upgrades: All proxies referencing the beacon instantly adopt new logic upon upgrade.
+
+Immutable Security Checks: Ensures zero-address protection and upgrade verification.
+
+Gas Efficient: Minimalistic design optimized for low-cost deployments and interactions.
+
+Event Logging: Emits upgrade and admin-change events for easy off-chain monitoring.
+
+Seamless Integration: Easily connects with BeaconProxy or custom proxy patterns.
+
+Future Scope
+
+Multi-Admin Role Support: Adding role-based access control for decentralized upgrade governance.
+
+Timelocked Upgrades: Delay upgrade execution for enhanced transparency and user trust.
+
+Upgrade Validators: Implement optional safety hooks to validate new logic before activation.
+
+Proxy Factory Integration: Automated deployment of multiple beacon-linked proxies.
+
+On-chain Version History: Store previous implementations for auditability and rollback potential.
+
+Cross-Chain Beacon Sync: Unified beacon upgrades across multiple blockchain networks.
 ## Contract Details
 0xCEa78E18E2C224E4d4B17CD34717468505259128
 ![alt text](image.png)
